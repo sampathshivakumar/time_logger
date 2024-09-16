@@ -1,0 +1,15 @@
+# k8s-pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: time-logger-pod
+spec:
+  containers:
+  - name: time-logger
+    image: <your-docker-image> # Replace this with your built Docker image
+    volumeMounts:
+    - name: log-volume
+      mountPath: /var/log
+  volumes:
+  - name: log-volume
+    emptyDir: {}  # This will create a temporary directory in the Pod
